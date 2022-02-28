@@ -17,5 +17,14 @@ module.exports = {
     }
     return sanitizeEntity(entity, { model: strapi.models.event });
   },
+
+  async delete(ctx) {
+    const { id } = ctx.params;
+
+    const entity = await strapi.services.event.delete({ id });
+    return sanitizeEntity(entity, { model: strapi.models.event });
+  }
 };
  
+
+
