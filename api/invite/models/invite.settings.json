@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "invites",
+  "info": {
+    "name": "invite"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "isApproved": {
+      "type": "boolean",
+      "default": false
+    },
+    "event": {
+      "model": "event",
+      "via": "invites"
+    }
+  }
+}
