@@ -36,7 +36,12 @@ module.exports = {
     } else {
       entity = await strapi.services.event.update({ id }, ctx.request.body);
     }
+    return sanitizeEntity(entity, { model: strapi.models.event });
+  },
+  async findOne(ctx) {
+    const { id } = ctx.params;
 
+    const entity = await strapi.services.event.findOne({ id });
     return sanitizeEntity(entity, { model: strapi.models.event });
   },
 };
