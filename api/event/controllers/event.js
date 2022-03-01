@@ -23,7 +23,22 @@ module.exports = {
 
     const entity = await strapi.services.event.delete({ id });
     return sanitizeEntity(entity, { model: strapi.models.event });
-  }
+  },
+
+  async update(ctx) {
+    const { id } = ctx.params;
+    let entity;
+    if (ctx.is('multipart')) {
+      const { data, files } = parseMultipartData(ctx);
+      entity = await strapi.services.event.update({ id }, data, {
+        files,
+      });
+    } else {
+      entity = await strapi.services.event.update({ id }, ctx.request.body);
+    }
+
+    return sanitizeEntity(entity, { model: strapi.models.event });
+  },
 };
  
 
