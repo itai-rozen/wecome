@@ -38,6 +38,7 @@ module.exports = {
     }
     return sanitizeEntity(entity, { model: strapi.models.invite });
   },
+  
   async findOne(ctx) {
     const { id } = ctx.params;
 
